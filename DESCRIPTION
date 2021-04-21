@@ -1,13 +1,15 @@
 Package: AutomaticCellTypeIdentification
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Published automatic cell type identication method
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Bingbing Xie
+Maintainer: Bingbing Xie <xiebb7@mail.sysu.edu.cn>
+Description: AutomaticCellTypeIdentification provide a convenient way using the published automatic cell type identification method
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Depends: R(>= 3.5.0)
+Imports:
+  scmap,SingleCellExperiment,scibetR,Seurat
+Collate: 'Supervised.R' 'CompleteMethod.R' 'SemiSupervised.R' 'DiffMarker.R' 'UnSupervised.R'
 RoxygenNote: 7.1.1
