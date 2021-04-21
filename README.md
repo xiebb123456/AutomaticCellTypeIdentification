@@ -3,7 +3,7 @@
 AutomaticCellTypeIdentification is a wrapper of published automatic cell type identification methods which contains supervised methods, unsupervised methods and semi-supervised methods.
 
 <p align="center" width="100%">
-    <img height="10%" src="figure/website.png"> 
+    <img src="figure/website.png"> 
 </p>
 
 
