@@ -1,0 +1,79 @@
+---
+title: "Introduction to RoboticCellTypeIdentification"
+author: "Bingbing Xie"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    self_contained: yes
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    code_folding: show
+vignette: >
+  %\VignetteIndexEntry{Introduction to RoboticCellTypeIdentification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  fig.width = 6, 
+  fig.height = 4.8, 
+  cache = TRUE
+)
+```
+
+## Summary
+
+This tutorial provide demo of three types robotic methods.
+
+## Application of `RoboticCellTypeIdentification`
+
+First, we'll load the `RoboticCellTypeIdentification` package and `Seurat`.
+
+```{r load_libraries,  message=FALSE, results='hide', warning=FALSE}
+library("RoboticCellTypeIdentification")
+library("Seurat")
+```
+
+In this tutorial, we'll use the scRNA-seq of Liver tissue in Tabular Muris as training (10X) and testing (SM2) dataset. The demo data could be download from testdata. 
+
+```{r read_data}
+load('testdata/Liver_GSE109774_10X.RData')
+load('testdata/Liver_GSE109774_SM2.RData')
+```
+
+Then prepare the count matrix and canonical marker.
+
+```{r process_data}
+train = as.matrix(GetAssayData(train_object,slot='counts'))
+test = as.matrix(GetAssayData(test_object,slot='counts'))
+label_train = train_object$celltyperaw
+markers = diffmarker(train,label_train,only.pos=T)
+```
+
+Firstly,let's use supervised method to predict cell type of testing dataset by ```Seurat```.
+
+```{r process_data}
+predict_label = supervised(train,test,label_train,method='seurat')
+```
+
+You can check the predict label or compare the true and predict label through following command:
+
+```{r process_data}
+table(predict_label)
+table(test_object$celltyperaw,predict_label)
+```
+
+Secondly,let's use unsupervised method to predict cell type of testing dataset by ```CELLBLAST```, the python link which CELLBLAST installed should be provide.
+
+```{r process_data}
+predict_label = unsupervised(train,test,label_train,method='CELLBLAST',python_link='/home/anaconda3/envs/cellblast/bin/python')
+```
+
+lastly,let's use Semi-supervised method to predict cell type of testing dataset by ```SCSA```, Semi-supervised method need marker instead of expression matrix, here we use differential expressed marker from training dataset as input, the python link which SCSA installed should be provide.
+
+```{r process_data}
+predict_label = semisupervised(test,markers$marker_5,method='SCSA',python_link='/home/anaconda3/envs/scsa/bin/python')
+```
+
