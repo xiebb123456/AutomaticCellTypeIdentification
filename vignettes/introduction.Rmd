@@ -27,6 +27,17 @@ knitr::opts_chunk$set(
 
 This tutorial provide demo of three types robotic methods.
 
+###Install from R
+After installing all needed R packages, the conda environment of python-based methods ('ACTINN','CELLBALST','DigitalCellSorter','Markercount','MARS','scHPL','scVI') is needed to install.
+
+###Install from docker
+All need R and python packages are install in docker file.
+
+Start from docker:
+```docker
+sudo docker run -it registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltypeidentification
+```
+
 ## Application of `AutomaticCellTypeIdentification`
 
 First, we'll load the `AutomaticCellTypeIdentification` package and `Seurat`.
@@ -76,4 +87,18 @@ lastly,let's use markersupervised method to predict cell type of testing dataset
 ```{r process_data}
 predict_label = markersupervised(test,markers$marker_5,method='SCSA')
 ```
+
+Note: python-based methods should initiate first 
+
+reticulate::use_condaenv('cellblast')
+reticulate::py_config()
+library(AutomaticCellTypeIdentification)
+library("Seurat")
+load('testdata/Liver_GSE109774_10X.RData')
+load('testdata/Liver_GSE109774_SM2.RData')
+train = as.matrix(GetAssayData(train_object,slot='counts'))
+test = as.matrix(GetAssayData(test_object,slot='counts'))
+label_train = train_object$celltyperaw
+markers = diffmarker(train,label_train,only.pos=T)
+predict_label = lazysupervised(train,test,label_train,method='CELLBLAST')
 
