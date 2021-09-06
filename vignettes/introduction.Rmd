@@ -90,6 +90,7 @@ predict_label = markersupervised(test,markers$marker_5,method='SCSA')
 
 Note: python-based methods should initiate first 
 
+```{r process_data}
 reticulate::use_condaenv('cellblast')
 reticulate::py_config()
 library(AutomaticCellTypeIdentification)
@@ -101,4 +102,9 @@ test = as.matrix(GetAssayData(test_object,slot='counts'))
 label_train = train_object$celltyperaw
 markers = diffmarker(train,label_train,only.pos=T)
 predict_label = lazysupervised(train,test,label_train,method='CELLBLAST')
+```{r process_data}
 
+The parameter of raw automatic methods could set in eagersupervised, lazysupervised, and markersupervised. The detail of parameters could check through method.
+```{r process_data}
+garnett
+```{r process_data}
