@@ -26,10 +26,10 @@ sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltype
 
 ## Running AutomaticCellTypeIdentification methods
 
-Now, three interface of ```eager-supervised```, ```lazy-supervised```, ```marker-supervised``` methods supports the available automatic methods.  
-```eager-supervised``` methods include ACTINN, CaSTLe, CHETAH, clustifyr, Garnett, Markercount, MARS, scClassifR, scHPL, SciBet, scID, scLearn, scmapcluster, scPred, scVI, Seurat, SingleCellNet and SingleR.  
-```lazy-supervised``` methods include CELLBLAST, CellFishing.jl and scmapcell.  
-```marker-supervised``` methods include scTyper, Markercount, SCSA, DigitalCellSorter and SCINA.  
+Now, three interface of ```eagersupervised```, ```lazysupervised```, ```markersupervised``` methods supports the available automatic methods.  
+```eagersupervised``` methods include ACTINN, CaSTLe, CHETAH, clustifyr, Garnett, Markercount, MARS, scClassifR, scHPL, SciBet, scID, scLearn, scmapcluster, scPred, scVI, Seurat, SingleCellNet and SingleR.  
+```lazysupervised``` methods include CELLBLAST and scmapcell.  
+```markersupervised``` methods include scTyper, Markercount, SCSA, DigitalCellSorter and SCINA.  
 
 ### Prepare input data  
 The input of training and testing data is count matrix, the row is gene and the column is cell.
