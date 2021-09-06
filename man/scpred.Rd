@@ -4,7 +4,15 @@
 \alias{scpred}
 \title{scPred method}
 \usage{
-scpred(train, test, label_train, model = "svmRadial", reclassify = NULL)
+scpred(
+  train,
+  test,
+  label_train,
+  model = "svmRadial",
+  reclassify = NULL,
+  time = F,
+  threshold = 0.55
+)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -16,6 +24,10 @@ scpred(train, test, label_train, model = "svmRadial", reclassify = NULL)
 \item{model}{Classification model supported via ‘caret’ package. A list of all models can be found here.}
 
 \item{reclassify}{Cell types to reclassify using a different model}
+
+\item{time}{return computation time, default is FALSE.}
+
+\item{threshold}{Threshold used for probabilities to classify cells into classes. All cells below this threshold value will be labels as "unassigned". In the case of binary classification (two cell tyoes), a threshold of 0.5 will force all cells to be classified to any of the two cell types. For multi-class classification, if there's no probability higher than the threshold associated to a cell type, this will be labelled as "unassigned". Default: 0.55.}
 }
 \value{
 The predict cell type.

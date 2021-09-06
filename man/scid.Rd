@@ -10,7 +10,8 @@ scid(
   label_train,
   logFC = 0.6,
   only_pos = FALSE,
-  estimate_weights_from_target = FALSE
+  estimate_weights_from_target = FALSE,
+  time = F
 )
 }
 \arguments{
@@ -20,9 +21,7 @@ scid(
 
 \item{label_train}{A vector of cell type label of train.}
 
-\item{model}{Classification model supported via ‘caret’ package. A list of all models can be found here.}
-
-\item{reclassify}{Cell types to reclassify using a different model}
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

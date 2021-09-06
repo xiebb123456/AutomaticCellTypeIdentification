@@ -2,28 +2,21 @@
 % Please edit documentation in R/CompleteMethod.R
 \name{digitalcellsorter}
 \alias{digitalcellsorter}
-\title{--------------------------
----UnSupervised methods---
---------------------------
-----------------------------
----SemiSupervised methods---
-----------------------------}
+\title{-----------------------------
+---Lazy-supervised methods---
+-----------------------------
+-------------------------------
+---Marker-supervised methods---
+-------------------------------}
 \usage{
-digitalcellsorter(
-  test,
-  python_link = NULL,
-  python_package_link = NULL,
-  marker_list = NULL
-)
+digitalcellsorter(test, marker_list = NULL, time = F)
 }
 \arguments{
 \item{test}{Same format like train.}
 
-\item{python_link}{The absolute path of python that DigitalCellSorter is installed, default is null.}
-
-\item{python_package_link}{If DigitalCellSorter is installed and can not load, you can provide the absolute path of DigitalCellSorter package, like '/usr/local/lib/python3.8/site-packages/', default is null.}
-
 \item{marker_list}{cell type marker list contains marker genes.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

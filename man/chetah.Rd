@@ -4,7 +4,7 @@
 \alias{chetah}
 \title{CEHTAH method}
 \usage{
-chetah(train, test, label_train)
+chetah(train, test, label_train, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -13,7 +13,7 @@ chetah(train, test, label_train)
 
 \item{label_train}{A vector of cell type label of train.}
 
-\item{threshold}{threshold for 'Unknown' cell type.}
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

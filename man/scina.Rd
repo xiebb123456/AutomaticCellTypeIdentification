@@ -13,7 +13,8 @@ scina(
   sensitivity_cutoff = 0.9,
   rm_overlap = FALSE,
   allow_unknown = TRUE,
-  log_file = "SCINA.log"
+  log_file = "SCINA.log",
+  time = F
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ scina(
 \item{allow_unknown}{A binary value, default 1 (TRUE). If 0 (FALSE) then no cell will be assigned to the 'unknown' category.}
 
 \item{log_file}{A string names the record of the running status of the SCINA algorithem, default 'SCINA.log'.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

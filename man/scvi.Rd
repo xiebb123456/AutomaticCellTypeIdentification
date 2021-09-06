@@ -4,7 +4,7 @@
 \alias{scvi}
 \title{scVI method}
 \usage{
-scvi(train, test, label_train, python_link = NULL, n_epochs = 20)
+scvi(train, test, label_train, n_epochs = 20, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -13,7 +13,7 @@ scvi(train, test, label_train, python_link = NULL, n_epochs = 20)
 
 \item{label_train}{A vector of cell type label of train.}
 
-\item{python_link}{The absolute path of python that tensorflow 1 is installed.}
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

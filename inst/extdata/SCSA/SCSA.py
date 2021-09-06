@@ -367,7 +367,7 @@ class Annotator(object):
     def calcu_seurat_group(self,expfile,hgvc=False):
         """deal with seurat input matrix"""
         exps = read_csv(expfile)
-        pre,suf,suf1 ="avg_logFC"," UMI counts/cell",""
+        pre,suf,suf1 ="avg_log2FC"," UMI counts/cell",""
         fid = "gene"
         pname = "p_val_adj"
         assert fid in exps.columns, 'No "gene" column. Wrong format? Seurat, Scanpy, Scran or Cellranger?'
@@ -483,7 +483,7 @@ class Annotator(object):
             elif v.startswith("l"):
                 pre = v
         
-        #pre,suf,suf1 ="avg_logFC"," UMI counts/cell",""
+        #pre,suf,suf1 ="avg_log2FC"," UMI counts/cell",""
         #fid = "gene"
         #pname = "p_val_adj"
         #assert fid in exps.columns, 'No "gene" column. Wrong format? Scanpy, Seurat or Cellranger?'
@@ -617,7 +617,7 @@ class Annotator(object):
                 k,v = c.split("_")
                 cnum.add(v)
         
-        #pre,suf,suf1 ="avg_logFC"," UMI counts/cell",""
+        #pre,suf,suf1 ="avg_log2FC"," UMI counts/cell",""
         #fid = "gene"
         #pname = "p_val_adj"
         #assert fid in exps.columns, 'No "gene" column. Wrong format? Scanpy, Seurat or Cellranger?'

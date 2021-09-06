@@ -9,7 +9,7 @@ garnett(
   test,
   label_train,
   marker_list,
-  db = org.Mm.eg.db,
+  db = "none",
   cds_gene_id_type = "SYMBOL",
   marker_file_gene_id_type = "SYMBOL",
   min_observations = 8,
@@ -24,7 +24,8 @@ garnett(
   verbose = FALSE,
   cluster_extend_max_frac_unknown = 0.95,
   cluster_extend_max_frac_incorrect = 0.1,
-  return_type_levels = FALSE
+  return_type_levels = FALSE,
+  time = F
 )
 }
 \arguments{
@@ -36,11 +37,11 @@ garnett(
 
 \item{marker_list}{A list contains marker gene of cell type.}
 
-\item{db}{Bioconductor AnnotationDb-class package for converting gene IDs. For example, for humans use org.Hs.eg.db. See available packages at \href{http://bioconductor.org/packages/3.8/data/annotation/}{Bioconductor}. If your organism does not have an AnnotationDb-class database available, you can specify "none", however then Garnett will not check/convert gene IDs, so your CDS and marker file must have the same gene ID type.}
+\item{db}{Bioconductor AnnotationDb-class package for converting gene IDs. For example, for humans use org.Hs.eg.db. See available packages at http://bioconductor.org/packages/3.8/data/annotation/ Bioconductor. If your organism does not have an AnnotationDb-class database available, you can specify "none", however then Garnett will not check/convert gene IDs, so your CDS and marker file must have the same gene ID type.}
 
-\item{cds_gene_id_type}{The type of gene ID used in the CDS. Should be one of the values in \code{columns(db)}. Default is "ENSEMBL". Ignored if db = "none".}
+\item{cds_gene_id_type}{The type of gene ID used in the CDS. Should be one of the values in columns(db). Default is "ENSEMBL". Ignored if db = "none".}
 
-\item{marker_file_gene_id_type}{The type of gene ID used in the marker file. Should be one of the values in \code{columns(db)}. Default is "SYMBOL". Ignored if db = "none".}
+\item{marker_file_gene_id_type}{The type of gene ID used in the marker file. Should be one of the values in columns(db). Default is "SYMBOL". Ignored if db = "none".}
 
 \item{min_observations}{An integer. The minimum number of representative cells per cell type required to include the cell type in the predictive model. Default is 8.}
 
@@ -48,33 +49,27 @@ garnett(
 
 \item{num_unknown}{An integer. The number of unknown type cells to use as an outgroup during classification. Default is 500.}
 
-\item{propogate_markers}{Logical. Should markers from child nodes of a cell type be used in finding representatives of the parent type? Should generally be \code{TRUE}.}
+\item{propogate_markers}{Logical. Should markers from child nodes of a cell type be used in finding representatives of the parent type? Should generally be TRUE.}
 
 \item{cores}{An integer. The number of cores to use for computation.}
 
-\item{lambdas}{\code{NULL} or a numeric vector. Allows the user to pass their own lambda values to \code{\link[glmnet]{cv.glmnet}}. If \code{NULL}, preset lambda values are used.}
+\item{lambdas}{NULL or a numeric vector. Allows the user to pass their own lambda values to glmnet cv.glmnet. If NULL, preset lambda values are used.}
 
-\item{return_initial_assign}{Logical indicating whether an initial assignment data frame for the root level should be returned instead of a classifier. This can be useful while choosing/debugging markers. Please note that this means that a classifier will not be built, so you will not be able to move on to the next steps of the workflow until you rerun the functionwith \code{return_initial_assign = FALSE}. Default is \code{FALSE}.}
+\item{return_initial_assign}{Logical indicating whether an initial assignment data frame for the root level should be returned instead of a classifier. This can be useful while choosing/debugging markers. Please note that this means that a classifier will not be built, so you will not be able to move on to the next steps of the workflow until you rerun the functionwith return_initial_assign = FALSE. Default is FALSE.}
 
 \item{rank_prob_ratio}{Numeric value greater than 1. This is the minimum odds ratio between the probability of the most likely cell type to the second most likely cell type to allow assignment. Default is 1.5. Higher values are more conservative.}
 
-\item{cluster_extend}{Logical. When \code{TRUE}, the classifier provides a secondary cluster-extended classification, which assigns type for the entire cluster based on the assignments of the cluster members. If the pData table of the input CDS has a column called "garnett_cluster", this will be used for cluster-extended assignments. Otherwise, assignments are calculated using Louvain community detection in PCA space. This assignment is returned as a column in the output CDS pData table. For large datasets, if the "garnett_cluster" column is not provided and \code{cluster_extend = TRUE}, the function can be significantly slower the first time it is run. See details for more information.}
+\item{cluster_extend}{Logical. When TRUE, the classifier provides a secondary cluster-extended classification, which assigns type for the entire cluster based on the assignments of the cluster members. If the pData table of the input CDS has a column called "garnett_cluster", this will be used for cluster-extended assignments. Otherwise, assignments are calculated using Louvain community detection in PCA space. This assignment is returned as a column in the output CDS pData table. For large datasets, if the "garnett_cluster" column is not provided and cluster_extend = TRUE, the function can be significantly slower the first time it is run. See details for more information.}
 
 \item{verbose}{Logical. Should progress messages be printed.}
 
-\item{cluster_extend_max_frac_unknown}{Numeric between 0 and 1. The maximum fraction of a cluster allowed to be classified as 'Unknown' and still extend classifications to the cluster. Only used when \code{cluster_extend = TRUE}. Default is 0.95. See details.}
+\item{cluster_extend_max_frac_unknown}{Numeric between 0 and 1. The maximum fraction of a cluster allowed to be classified as 'Unknown' and still extend classifications to the cluster. Only used when cluster_extend = TRUE. Default is 0.95. See details.}
 
-\item{cluster_extend_max_frac_incorrect}{Numeric between 0 and 1. The maximum fraction of classified cells in a cluster allowed to be incorrectly classified (i.e. assigned to a non-dominant type) and still extend classifications to the cluster. Fraction does not include 'Unknown' cells. Only used when \code{cluster_extend = TRUE}. Default is 0.1. See details.}
+\item{cluster_extend_max_frac_incorrect}{Numeric between 0 and 1. The maximum fraction of classified cells in a cluster allowed to be incorrectly classified (i.e. assigned to a non-dominant type) and still extend classifications to the cluster. Fraction does not include 'Unknown' cells. Only used when cluster_extend = TRUE. Default is 0.1. See details.}
 
-\item{return_type_levels}{Logical. When \code{TRUE}, the function additionally appends assignments from each hierarchical level in the classifier as columns in the pData table labeled \code{cell_type_li}, where "i" indicates the corresponding level index}
+\item{return_type_levels}{Logical. When TRUE, the function additionally appends assignments from each hierarchical level in the classifier as columns in the pData table labeled cell_type_li, where "i" indicates the corresponding level index}
 
-\item{cds}{Input CDS object.}
-
-\item{marker_file}{A character path to the marker file to define cell types.See details and documentation for \code{\link{Parser}} by running \code{?Parser}for more information.}
-
-\item{classifier_gene_id_type}{The type of gene ID that will be used in the classifier. If possible for your organism, this should be "ENSEMBL", which is the default. Ignored if db = "none".}
-
-\item{classifier}{Trained garnett_classifier - output from \code{\link{train_cell_classifier}}.}
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

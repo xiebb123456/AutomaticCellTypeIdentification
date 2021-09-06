@@ -4,7 +4,7 @@
 \alias{cellblast}
 \title{CELLBLAST method}
 \usage{
-cellblast(train, test, label_train, python_link = NULL)
+cellblast(train, test, label_train, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -12,6 +12,8 @@ cellblast(train, test, label_train, python_link = NULL)
 \item{test}{Same format like train.}
 
 \item{label_train}{A vector of cell type label of train.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

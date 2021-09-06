@@ -4,7 +4,21 @@
 \alias{seurat}
 \title{Seurat method}
 \usage{
-seurat(train, test, label_train, k.filter = 200)
+seurat(
+  train,
+  test,
+  label_train,
+  k.filter = 200,
+  time = F,
+  min.cells = 0,
+  min.features = 0,
+  normalization.method = "LogNormalize",
+  scale.factor = 10000,
+  selection.method = "vst",
+  nfeatures = 2000,
+  mean.cutoff = c(0.1, 8),
+  dispersion.cutoff = c(1, Inf)
+)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -12,6 +26,24 @@ seurat(train, test, label_train, k.filter = 200)
 \item{test}{Same format like train.}
 
 \item{label_train}{A vector of cell type label of train.}
+
+\item{time}{return computation time, default is FALSE.}
+
+\item{min.cells}{Include features detected in at least this many cells. Will subset the counts matrix as well. To reintroduce excluded features, create a new object with a lower cutoff. Default: 0.}
+
+\item{min.features}{Include cells where at least this many features are detected. Default: 0.}
+
+\item{normalization.method}{Method for normalization. Default: LogNormalize.}
+
+\item{scale.factor}{Sets the scale factor for cell-level normalization. Default: 10000.}
+
+\item{selection.method}{How to choose top variable features. Default: vst.}
+
+\item{nfeatures}{Number of features to select as top variable features; only used when selection.method is set to 'dispersion' or 'vst'. Default: 2000.}
+
+\item{mean.cutoff}{A two-length numeric vector with low- and high-cutoffs for feature means. Default: c(0.1, 8).}
+
+\item{dispersion.cutoff}{A two-length numeric vector with low- and high-cutoffs for feature dispersions. Default: c(1, Inf).}
 }
 \value{
 The predict cell type.

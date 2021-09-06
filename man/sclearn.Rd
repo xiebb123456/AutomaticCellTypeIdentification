@@ -12,18 +12,19 @@ sclearn(
   gene_low = 500,
   gene_high = 10000,
   mito_high = 0.1,
+  min_cell_number = 10,
   umi_low = 1500,
   umi_high = Inf,
   logNormalize = TRUE,
-  log_normalized = F,
-  min_cell_number = 10,
+  log_normalized = TRUE,
   threshold = 0.05,
   sample_information_timePoint = NULL,
   bootstrap_times = 10,
   cutoff = 0.01,
   dim_para = 0.999,
   vote_rate = 0.6,
-  diff = 0.05
+  diff = 0.05,
+  time = F
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ sclearn(
 \item{gene_high}{The maximum gene number for cells. cells with genes above this threshold are filtered(default 10000).}
 
 \item{mito_high}{The maximum percentage of mitochondrial genes detected(default 0.1 among all the detected genes).}
+
+\item{min_cell_number}{The minimal cell number to filter cell type. Default is 10.}
 
 \item{umi_low}{The minimum number of unique molecular identifier induced (default 1500).}
 
@@ -63,7 +66,7 @@ sclearn(
 
 \item{diff}{Default is 0.05.}
 
-\item{threshold_use}{Default is TRUE.}
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

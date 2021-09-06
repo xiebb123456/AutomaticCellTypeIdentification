@@ -4,7 +4,7 @@
 \alias{scibet}
 \title{scibet method}
 \usage{
-scibet(train, test, label_train, norm = F)
+scibet(train, test, label_train, norm = F, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -14,6 +14,8 @@ scibet(train, test, label_train, norm = F)
 \item{label_train}{A vector of cell type label of train.}
 
 \item{norm}{The data need normalize or not.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

@@ -4,7 +4,14 @@
 \alias{cellfishing.ji}
 \title{Cellfishing.ji method}
 \usage{
-cellfishing.ji(train, test, label_train, k = 10)
+cellfishing.ji(
+  train,
+  test,
+  label_train,
+  k = 10,
+  time = F,
+  julia_dir = "/opt/julia/bin/"
+)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -14,6 +21,8 @@ cellfishing.ji(train, test, label_train, k = 10)
 \item{label_train}{A vector of cell type label of train.}
 
 \item{k}{a positive integer specifying the number of nearest neighbours to find.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

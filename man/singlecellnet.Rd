@@ -13,7 +13,8 @@ singlecellnet(
   nTopGenePairs = 25,
   nRand = 70,
   nTrees = 1000,
-  nrand = 50
+  nrand = 50,
+  time = F
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ singlecellnet(
 \item{nTrees}{number of trees for random forest classifier (default : 1000).}
 
 \item{nrand}{the number of random profiles generate for evaluation process (default : 50).}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

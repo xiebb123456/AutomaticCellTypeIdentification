@@ -2,14 +2,14 @@
 % Please edit documentation in R/CompleteMethod.R
 \name{scmapcell}
 \alias{scmapcell}
-\title{------------------------
----Supervised methods---
-------------------------
---------------------------
----UnSupervised methods---
---------------------------}
+\title{------------------------------
+---Eager-supervised methods---
+------------------------------
+-----------------------------
+---Lazy-supervised methods---
+-----------------------------}
 \usage{
-scmapcell(train, test, label_train, w1 = 10, w2 = 3, threshold = 0.5)
+scmapcell(train, test, label_train, w1 = 10, w2 = 3, threshold = 0.5, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -23,6 +23,8 @@ scmapcell(train, test, label_train, w1 = 10, w2 = 3, threshold = 0.5)
 \item{w2}{an integer specifying the number of nearest neighbours to find.}
 
 \item{threshold}{the threshold which the maximum similarity between the query and a reference cell must exceed for the cell-type to be assigned.}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

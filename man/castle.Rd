@@ -4,7 +4,20 @@
 \alias{castle}
 \title{CaSTLe method}
 \usage{
-castle(train, test, label_train, threshold = 0.7)
+castle(
+  train,
+  test,
+  label_train,
+  threshold = 0.7,
+  time = F,
+  eta = 0.7,
+  max_depth = 5,
+  gamma = 0.001,
+  verbose = 0,
+  min_child_weight = 10,
+  nrounds = 20,
+  nthread = 1
+)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -14,6 +27,22 @@ castle(train, test, label_train, threshold = 0.7)
 \item{label_train}{A vector of cell type label of train.}
 
 \item{threshold}{threshold for 'Unknown' cell type.}
+
+\item{time}{return computation time, default is FALSE.}
+
+\item{eta}{control the learning rate: scale the contribution of each tree by a factor of 0 < eta < 1 when it is added to the current approximation. Used to prevent overfitting by making the boosting process more conservative. Lower value for eta implies larger value for nrounds: low eta value means model more robust to overfitting but slower to compute. Default: 0.7.}
+
+\item{max_depth}{maximum depth of a tree. Default: 5.}
+
+\item{gamma}{minimum loss reduction required to make a further partition on a leaf node of the tree. the larger, the more conservative the algorithm will be. Default: 0.001.}
+
+\item{verbose}{If 0, xgboost will stay silent. If 1, it will print information about performance. If 2, some additional information will be printed out. Note that setting verbose > 0 automatically engages the cb.print.evaluation(period=1) callback function. Default 0.}
+
+\item{min_child_weight}{minimum sum of instance weight (hessian) needed in a child. If the tree partition step results in a leaf node with the sum of instance weight less than min_child_weight, then the building process will give up further partitioning. In linear regression mode, this simply corresponds to minimum number of instances needed to be in each node. The larger, the more conservative the algorithm will be. Default: 10.}
+
+\item{nrounds}{number of boosting iterations. Default 20.}
+
+\item{nthread}{if OpenMP is present. Number of threads can also be manually specified via nthread parameter. Default 1.}
 }
 \value{
 The predict cell type.

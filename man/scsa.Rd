@@ -4,7 +4,7 @@
 \alias{scsa}
 \title{SCSA method}
 \usage{
-scsa(test = NULL, marker_list = NULL, marker_file = NULL)
+scsa(test = NULL, marker_list = NULL, marker_file = NULL, time = F)
 }
 \arguments{
 \item{test}{Same format like train.}
@@ -12,6 +12,8 @@ scsa(test = NULL, marker_list = NULL, marker_file = NULL)
 \item{marker_list}{A list contains marker gene of cell type.}
 
 \item{marker_file}{The absolute path of marker file (now just support marker info from Seurat FindAllMarkers method).}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.

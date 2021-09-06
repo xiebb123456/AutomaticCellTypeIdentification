@@ -8,7 +8,6 @@ singler(
   train,
   test,
   label_train,
-  method = "single",
   clusters = NULL,
   genes = "de",
   sd.thresh = 1,
@@ -18,7 +17,16 @@ singler(
   prune = TRUE,
   assay.type.test = "logcounts",
   assay.type.ref = "logcounts",
-  check.missing = TRUE
+  check.missing = TRUE,
+  time = F,
+  min.cells = 0,
+  min.features = 0,
+  normalization.method = "LogNormalize",
+  scale.factor = 10000,
+  selection.method = "vst",
+  nfeatures = 2000,
+  mean.cutoff = c(0.1, 8),
+  dispersion.cutoff = c(1, Inf)
 )
 }
 \arguments{
@@ -28,19 +36,35 @@ singler(
 
 \item{label_train}{A vector of cell type label of train.}
 
-\item{method}{Deprecated.}
+\item{clusters}{A character vector or factor of cluster identities for each cell in test. If set, annotation is performed on the aggregated cluster profiles, otherwise it defaults to per-cell annotation.}
 
-\item{clusters}{A character vector or factor of cluster identities for each cell in \code{test}. If set, annotation is performed on the aggregated cluster profiles, otherwise it defaults to per-cell annotation.}
+\item{genes, sd.thresh}{Arguments controlling the choice of marker genes used for annotation, see trainSingleR.}
 
-\item{genes, sd.thresh}{Arguments controlling the choice of marker genes used for annotation, see \code{\link{trainSingleR}}.}
+\item{quantile, fine.tune, tune.thresh, prune}{Further arguments to pass to classifySingleR.}
 
-\item{quantile, fine.tune, tune.thresh, prune}{Further arguments to pass to \code{\link{classifySingleR}}.}
+\item{assay.type.test}{An integer scalar or string specifying the assay of test containing the relevant expression matrix, if test is a SummarizedExperiment object.}
 
-\item{assay.type.test}{An integer scalar or string specifying the assay of \code{test} containing the relevant expression matrix, if \code{test} is a \linkS4class{SummarizedExperiment} object.}
+\item{assay.type.ref}{An integer scalar or string specifying the assay of ref containing the relevant expression matrix, if ref is a SummarizedExperiment object (or is a list that contains one or more such objects).}
 
-\item{assay.type.ref}{An integer scalar or string specifying the assay of \code{ref} containing the relevant expression matrix, if \code{ref} is a \linkS4class{SummarizedExperiment} object (or is a list that contains one or more such objects).}
+\item{check.missing}{Logical scalar indicating whether rows should be checkd for missing values (and if found, removed).}
 
-\item{check.missing}{Logical scalar indicating whether rows should be checked for missing values (and if found, removed).}
+\item{time}{return computation time, default is FALSE.}
+
+\item{min.cells}{Include features detected in at least this many cells. Will subset the counts matrix as well. To reintroduce excluded features, create a new object with a lower cutoff. Default: 0.}
+
+\item{min.features}{Include cells where at least this many features are detected. Default: 0.}
+
+\item{normalization.method}{Method for normalization. Default: LogNormalize.}
+
+\item{scale.factor}{Sets the scale factor for cell-level normalization. Default: 10000.}
+
+\item{selection.method}{How to choose top variable features. Default: vst.}
+
+\item{nfeatures}{Number of features to select as top variable features; only used when selection.method is set to 'dispersion' or 'vst'. Default: 2000.}
+
+\item{mean.cutoff}{A two-length numeric vector with low- and high-cutoffs for feature means. Default: c(0.1, 8).}
+
+\item{dispersion.cutoff}{A two-length numeric vector with low- and high-cutoffs for feature dispersions. Default: c(1, Inf).}
 }
 \value{
 The predict cell type.

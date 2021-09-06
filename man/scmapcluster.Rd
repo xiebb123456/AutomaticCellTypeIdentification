@@ -4,7 +4,7 @@
 \alias{scmapcluster}
 \title{scmapcluster method}
 \usage{
-scmapcluster(train, test, label_train, threshold = 0.7)
+scmapcluster(train, test, label_train, threshold = 0.7, time = F)
 }
 \arguments{
 \item{train}{A gene-cell matrix of single cell expression data.}
@@ -14,6 +14,8 @@ scmapcluster(train, test, label_train, threshold = 0.7)
 \item{label_train}{A vector of cell type label of train.}
 
 \item{threshold}{threshold on similarity (or probability for SVM and RF)}
+
+\item{time}{return computation time, default is FALSE.}
 }
 \value{
 The predict cell type.
