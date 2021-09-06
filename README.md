@@ -14,7 +14,11 @@ You can install AutomaticCellTypeIdentification from github with:
 ```R
 devtools::install_github('xiebb123456/AutomaticCellTypeIdentification')
 ```
-Note: when using python-based automatic methods, the python link of automatic methods need to provided.
+Note: AutomaticCellTypeIdentification is a wrapper of published methods, the needed package is in Description file.
+
+'''docker'''
+sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltypeidentification
+'''
 
 ## Running AutomaticCellTypeIdentification methods
 
