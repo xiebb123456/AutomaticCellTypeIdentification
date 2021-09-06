@@ -20,9 +20,9 @@ Note: AutomaticCellTypeIdentification is a wrapper of published methods, the nee
 
 
 ### Install from docker
-'''R
+```docker
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltypeidentification
-'''
+```
 
 ## Running AutomaticCellTypeIdentification methods
 
