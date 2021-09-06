@@ -26,30 +26,29 @@ sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltype
 
 ## Running AutomaticCellTypeIdentification methods
 
-Now, three interface of ```supervised```, ```unsupervised```, ```semisupervised``` methods supports the available robotic methods.  
-```supervised``` methods include Seurat, ACTINN, CaSTLe, CHETAH, Garnett, SciBet, scID, scLearn, scmapcluster, scPred, scVI, SingleCellNet and SingleR.  
-```unsupervised``` methods include CELLBLAST, CellFishing.jl and scmapcell.  
-```semisupervised``` methods include SCSA, DigitalCellSorter and SCINA.  
+Now, three interface of ```eager-supervised```, ```lazy-supervised```, ```marker-supervised``` methods supports the available automatic methods.  
+```eager-supervised``` methods include ACTINN, CaSTLe, CHETAH, clustifyr, Garnett, Markercount, MARS, scClassifR, scHPL, SciBet, scID, scLearn, scmapcluster, scPred, scVI, Seurat, SingleCellNet and SingleR.  
+```lazy-supervised``` methods include CELLBLAST, CellFishing.jl and scmapcell.  
+```marker-supervised``` methods include scTyper, Markercount, SCSA, DigitalCellSorter and SCINA.  
 
 ### Prepare input data  
-The training data with cell type could download from GEO/ArrayExpress/GSA.  
-The canonical marker of cell type could download from PanglaoDB/CellMarker/CancerSEA.  
-The training and testing data, the row is gene and the column is cell, the count format is suggested.
+The input of training and testing data is count matrix, the row is gene and the column is cell.
 
 ### Example with running supervised methods Seurat
 ```R
-supervised(train,test,label_train,method='Seurat')
+eagersupervised(train,test,label_train,method='Seurat')
 ```
 
 ### Example with running unsupervised methods CELLBLAST
 ```R
-unsupervised(train,test,label_train,method='CELLBLAST',python_link='/home/anaconda3/envs/cellblast/bin/python')
+lazysupervised(train,test,label_train,method='CELLBLAST')
 ```
 
 ### Example with running supervised methods SCSA
 ```R
-semisupervised(test,marker,method='SCSA',python_link='/home/anaconda3/envs/scsa/bin/python')
+markersupervised(test,marker,method='SCSA')
 ```
+Note: the conda environment of python-based method is needed to load at the beginning in R.
 
 ## Tutorial
 For more details and basic usage see following tutorials:
