@@ -52,10 +52,10 @@ label_train = train_object$celltyperaw
 markers = diffmarker(train,label_train,only.pos=T)
 ```
 
-Firstly,let's use supervised method to predict cell type of testing dataset by ```Seurat```.
+Firstly,let's use eagersupervised method to predict cell type of testing dataset by ```Seurat```.
 
 ```{r process_data}
-predict_label = supervised(train,test,label_train,method='seurat')
+predict_label = eagersupervised(train,test,label_train,method='seurat')
 ```
 
 You can check the predict label or compare the true and predict label through following command:
@@ -65,15 +65,15 @@ table(predict_label)
 table(test_object$celltyperaw,predict_label)
 ```
 
-Secondly,let's use unsupervised method to predict cell type of testing dataset by ```CELLBLAST```, the python link which CELLBLAST installed should be provide.
+Secondly,let's use lazysupervised method to predict cell type of testing dataset by ```CELLBLAST```.
 
 ```{r process_data}
-predict_label = unsupervised(train,test,label_train,method='CELLBLAST',python_link='/home/anaconda3/envs/cellblast/bin/python')
+predict_label = lazysupervised(train,test,label_train,method='CELLBLAST')
 ```
 
-lastly,let's use Semi-supervised method to predict cell type of testing dataset by ```SCSA```, Semi-supervised method need marker instead of expression matrix, here we use differential expressed marker from training dataset as input, the python link which SCSA installed should be provide.
+lastly,let's use markersupervised method to predict cell type of testing dataset by ```SCSA```, markersupervised method need marker instead of expression matrix, here we use differential expressed marker from training dataset as input.
 
 ```{r process_data}
-predict_label = semisupervised(test,markers$marker_5,method='SCSA',python_link='/home/anaconda3/envs/scsa/bin/python')
+predict_label = markersupervised(test,markers$marker_5,method='SCSA')
 ```
 
