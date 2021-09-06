@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 This tutorial provide demo of three types robotic methods.
 
 ###Install from R
-After installing all needed R packages, the conda environment of python-based methods ('ACTINN','CELLBALST','DigitalCellSorter','Markercount','MARS','scHPL','scVI') is needed to install.
+After installing all needed R packages, the conda environment of python-based methods ('actinn','cellblast','digitalcellsorter','markercount','mars','schpl','scvi') is needed to install.
 
 ###Install from docker
 All need R and python packages are install in docker file.
