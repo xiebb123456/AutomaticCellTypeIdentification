@@ -16,7 +16,7 @@ devtools::install_github('xiebb123456/AutomaticCellTypeIdentification')
 ```
 Note: AutomaticCellTypeIdentification is a wrapper of published methods, the needed package is in Description file.
 
-'''docker'''
+'''docker
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltypeidentification
 '''
 
