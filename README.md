@@ -9,6 +9,8 @@ AutomaticCellTypeIdentification is a wrapper of published automatic cell type id
 
 ## Installation
 
+### Install from R
+
 You can install AutomaticCellTypeIdentification from github with:
 
 ```R
@@ -16,7 +18,9 @@ devtools::install_github('xiebb123456/AutomaticCellTypeIdentification')
 ```
 Note: AutomaticCellTypeIdentification is a wrapper of published methods, the needed package is in Description file.
 
-'''docker
+
+### Install from docker
+'''R
 sudo docker pull registry.cn-hangzhou.aliyuncs.com/xiebb123456/automaticcelltypeidentification
 '''
 
