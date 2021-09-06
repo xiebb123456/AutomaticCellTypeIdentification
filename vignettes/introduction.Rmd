@@ -1,5 +1,5 @@
 ---
-title: "Introduction to RoboticCellTypeIdentification"
+title: "Introduction to AutomaticCellTypeIdentification"
 author: "Bingbing Xie"
 date: "`r Sys.Date()`"
 output: 
@@ -10,7 +10,7 @@ output:
     toc_depth: 2
     code_folding: show
 vignette: >
-  %\VignetteIndexEntry{Introduction to RoboticCellTypeIdentification}
+  %\VignetteIndexEntry{Introduction to AutomaticCellTypeIdentification}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -27,12 +27,12 @@ knitr::opts_chunk$set(
 
 This tutorial provide demo of three types robotic methods.
 
-## Application of `RoboticCellTypeIdentification`
+## Application of `AutomaticCellTypeIdentification`
 
-First, we'll load the `RoboticCellTypeIdentification` package and `Seurat`.
+First, we'll load the `AutomaticCellTypeIdentification` package and `Seurat`.
 
 ```{r load_libraries,  message=FALSE, results='hide', warning=FALSE}
-library("RoboticCellTypeIdentification")
+library("AutomaticCellTypeIdentification")
 library("Seurat")
 ```
 
