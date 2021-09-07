@@ -34,17 +34,17 @@ Now, three interface of ```eagersupervised```, ```lazysupervised```, ```markersu
 ### Prepare input data  
 The input of training and testing data is count matrix, the row is gene and the column is cell.
 
-### Example with running supervised methods Seurat
+### Example with running eagersupervised methods Seurat
 ```R
 eagersupervised(train,test,label_train,method='Seurat')
 ```
 
-### Example with running unsupervised methods CELLBLAST
+### Example with running lazysupervised methods CELLBLAST
 ```R
 lazysupervised(train,test,label_train,method='CELLBLAST')
 ```
 
-### Example with running supervised methods SCSA
+### Example with running markersupervised methods SCSA
 ```R
 markersupervised(test,marker,method='SCSA')
 ```
