@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 
 ## Summary
 
-This tutorial provide demo of three types robotic methods.
+This tutorial provide demo of three types automatic methods.
 
 ###Install from R
 After installing all needed R packages, the conda environment of python-based methods ('actinn','cellblast','digitalcellsorter','markercount','mars','schpl','scvi') is needed to install.
