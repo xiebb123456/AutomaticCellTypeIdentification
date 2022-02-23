@@ -9,13 +9,40 @@ License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Depends: R(>= 3.5.0)
+biocViews:
 Imports:
-  scmap,scibetR,CHETAH,SingleR,garnett,scID,scLearn,
-  scPred,singleCellNet,M3Drop,SingleCellExperiment,
-  JuliaCall,SCINA,preprocessCore,xgboost,xlsx,Biobase,
-  BiocGenerics,Seurat,SummarizedExperiment,caret,
-  clustifyr,igraph,magrittr,monocle,
-  org.Mm.eg.db,raster,rhdf5,scClassifR,scTyper,sceasy,
+  scmap,
+  CHETAH,
+  SingleR,
+  M3Drop,
+  SingleCellExperiment,
+  JuliaCall,
+  SCINA,
+  preprocessCore,
+  xgboost,
+  xlsx,
+  Biobase,
+  BiocGenerics,
+  Seurat,
+  SummarizedExperiment,
+  caret,
+  clustifyr,
+  igraph,
+  magrittr,
+  monocle,
+  org.Mm.eg.db,
+  raster,
+  rhdf5,
+  scClassifR,
   scran
+Remotes: 
+  pcahan1/singleCellNet,
+  zwj-tina/scibetR,
+  cole-trapnell-lab/garnett,
+  bm2-lab/scLearn,
+  ACS0906/scPred,
+  BatadaLab/scID,
+  omicsCore/scTyper,
+  cellgeni/sceasy
 Collate: 'EagerSupervised.R' 'CompleteMethod.R' 'MarkerSupervised.R' 'DiffMarker.R' 'LazySupervised.R'
 RoxygenNote: 7.1.1
