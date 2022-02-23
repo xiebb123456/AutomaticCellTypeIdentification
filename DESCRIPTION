@@ -34,7 +34,14 @@ Imports:
   raster,
   rhdf5,
   scClassifR,
-  scran
+  scran,
+  scID,
+  singleCellNet,
+  scibetR,
+  garnett,
+  scPred,
+  scTyper,
+  sceasy
 Remotes: 
   pcahan1/singleCellNet,
   zwj-tina/scibetR,
