@@ -40,8 +40,10 @@ Imports:
   scibetR,
   garnett,
   scPred,
+  infercnv,
   scTyper,
-  sceasy
+  sceasy,
+  scLearn
 Remotes: 
   pcahan1/singleCellNet,
   zwj-tina/scibetR,
